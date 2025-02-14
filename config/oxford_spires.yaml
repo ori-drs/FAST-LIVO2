@@ -4,15 +4,14 @@ common:
   lid_topic: "/hesai/pandar"
   imu_topic: "/alphasense_driver_ros/imu"
   ros_driver_bug_fix: false
-  image_en: false
-  lidar_en: true
+  image_en: 1
+  lidar_en: 1
   img_topic: "/alphasense_driver_ros/cam0/debayered/image"
 
 time_offset:
   imu_time_offset: 0.0
   img_time_offset: 0.0
   exposure_time_init: 0.0
-
 
 imu:
   imu_en: true
@@ -23,9 +22,9 @@ imu:
   b_gyr_cov: 0.0001
 
 preprocess:
-  lidar_type: 5                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR,
+  lidar_type: 5       # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR,
   scan_line: 64
-  timestamp_unit: 3                 # 0-second, 1-milisecond, 2-microsecond, 3-nanosecond.
+  timestamp_unit: 3      # 0-second, 1-milisecond, 2-microsecond, 3-nanosecond.
   blind: 4
 
 extrin_calib:
@@ -38,17 +37,6 @@ extrin_calib:
         -0.9999228523756403, 0.009796274248324188, -0.007636904334543504]
   Pcl: [0.00035060884033447846, -0.079574053851818, -0.053826061545697405]
 
-
-#
-#lio:
-#  max_iterations: 10
-#  voxel_map_en: true
-#  pub_plane_en: true
-#  dept_err: 0.001
-#  beam_err: 0.01
-#  min_eigen_value: 0.005
-#  sigma_num: 300
-#  voxel_size: 0.01
-#  max_layer: 2
-#  max_points_num: 150
-#  layer_init_num: [ 5, 5, 5, 5, 5 ]
+evo:
+  seq_name: "Keble-2"
+  pose_output_en: true
