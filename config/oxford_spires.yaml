@@ -1,12 +1,32 @@
 # Adapted from: https://github.com/hku-mars/FAST-LIVO2/issues/43
 
 common:
-  img_topic: "/alphasense_driver_ros/cam0/debayered/image"
   lid_topic: "/hesai/pandar"
   imu_topic: "/alphasense_driver_ros/imu"
-  img_en: 0
-  lidar_en: 1
   ros_driver_bug_fix: false
+  image_en: false
+  lidar_en: true
+  img_topic: "/alphasense_driver_ros/cam0/debayered/image"
+
+time_offset:
+  imu_time_offset: 0.0
+  img_time_offset: 0.0
+  exposure_time_init: 0.0
+
+
+imu:
+  imu_en: true
+  imu_int_frame: 1
+  acc_cov: 0.1
+  gyr_cov: 0.1
+  b_acc_cov: 0.0001
+  b_gyr_cov: 0.0001
+
+preprocess:
+  lidar_type: 5                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR,
+  scan_line: 64
+  timestamp_unit: 3                 # 0-second, 1-milisecond, 2-microsecond, 3-nanosecond.
+  blind: 4
 
 extrin_calib:
   extrinsic_T: [-2.98737408e-03, -1.62174455e-02, 8.37937008e-02]
@@ -18,74 +38,17 @@ extrin_calib:
         -0.9999228523756403, 0.009796274248324188, -0.007636904334543504]
   Pcl: [0.00035060884033447846, -0.079574053851818, -0.053826061545697405]
 
-time_offset: 
-  imu_time_offset: 0.0
-  img_time_offset: 0.0
-  exposure_time_init: 0.0
 
-preprocess:
-  lidar_type: 5                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR,
-  scan_line: 64
-  timestamp_unit: 3                 # 0-second, 1-milisecond, 2-microsecond, 3-nanosecond.
-  blind: 4
-
-vio:
-  max_iterations: 5
-  outlier_threshold: 1000 # 78 100 156 #100 200 500 700 infinite
-  img_point_cov: 100 # 100 1000 
-  patch_size: 8
-  patch_pyrimid_level: 4
-  normal_en: true
-  raycast_en: false
-  inverse_composition_en: false
-  exposure_estimate_en: true
-  inv_expo_cov: 0.1
-
-imu:
-  imu_en: true
-  imu_int_frame: 1
-  acc_cov: 0.1
-  gyr_cov: 0.1
-  b_acc_cov: 0.0001
-  b_gyr_cov: 0.0001
-
-lio:
-  max_iterations: 10
-  voxel_map_en: true
-  pub_plane_en: false
-  dept_err: 0.001
-  beam_err: 0.01
-  min_eigen_value: 0.005
-  sigma_num: 3
-  voxel_size: 0.1
-  max_layer: 2
-  max_points_num: 150
-  layer_init_num: [ 5, 5, 5, 5, 5 ]
-
-local_map:  
-  map_sliding_en: false
-  half_map_size: 100
-  sliding_thresh: 8
-
-uav:
-  imu_rate_odom: false
-  gravity_align_en: false
-
-publish:
-  dense_map_en: true
-  pub_effect_point_en: false 
-  pub_plane_en: false
-  pub_scan_num: 1
-  blind_rgb_points: 0.0
-
-evo:
-  seq_name: "Keble_1"
-  pose_output_en: false
-
-pcd_save:
-  pcd_save_en: false
-  colmap_output_en: false # need to set interval = -1
-  filter_size_pcd: 0.15
-  interval: -1
-  # how many LiDAR frames saved in each pcd file;
-  # -1 : all frames will be saved in ONE pcd file, may lead to memory crash when having too much frames.
+#
+#lio:
+#  max_iterations: 10
+#  voxel_map_en: true
+#  pub_plane_en: true
+#  dept_err: 0.001
+#  beam_err: 0.01
+#  min_eigen_value: 0.005
+#  sigma_num: 300
+#  voxel_size: 0.01
+#  max_layer: 2
+#  max_points_num: 150
+#  layer_init_num: [ 5, 5, 5, 5, 5 ]
