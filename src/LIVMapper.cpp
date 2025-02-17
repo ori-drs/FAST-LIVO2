@@ -377,15 +377,16 @@ void LIVMapper::handleLIO()
     static bool pos_opend = false;
     static int ocount = 0;
     std::ofstream outFile, evoFile;
+    const std::string output_path = "/home/fu/Downloads/fast_livo2_logs/result/" + seq_name + ".txt";
     if (!pos_opend) 
     {
-      evoFile.open(std::string(ROOT_DIR) + "Log/result/" + seq_name + ".txt", std::ios::out);
+      evoFile.open(output_path, std::ios::out);
       pos_opend = true;
       if (!evoFile.is_open()) ROS_ERROR("open fail\n");
     } 
     else 
     {
-      evoFile.open(std::string(ROOT_DIR) + "Log/result/" + seq_name + ".txt", std::ios::app);
+      evoFile.open(output_path, std::ios::app);
       if (!evoFile.is_open()) ROS_ERROR("open fail\n");
     }
     Eigen::Matrix4d outT;
@@ -393,6 +394,7 @@ void LIVMapper::handleLIO()
     evoFile << std::fixed;
     evoFile << LidarMeasures.last_lio_update_time << " " << _state.pos_end[0] << " " << _state.pos_end[1] << " " << _state.pos_end[2] << " "
             << q.x() << " " << q.y() << " " << q.z() << " " << q.w() << std::endl;
+    std::cout << output_path << "\n";
   }
   
   euler_cur = RotMtoEuler(_state.rot_end);
