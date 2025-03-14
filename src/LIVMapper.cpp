@@ -392,6 +392,7 @@ void LIVMapper::handleLIO()
     Eigen::Matrix4d outT;
     Eigen::Quaterniond q(_state.rot_end);
     evoFile << std::fixed;
+    evoFile << std::setprecision(9);
     evoFile << LidarMeasures.last_lio_update_time << " " << _state.pos_end[0] << " " << _state.pos_end[1] << " " << _state.pos_end[2] << " "
             << q.x() << " " << q.y() << " " << q.z() << " " << q.w() << std::endl;
     std::cout << output_path << "\n";
