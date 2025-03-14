@@ -6,7 +6,7 @@ common:
   ros_driver_bug_fix: false
   image_en: 1
   lidar_en: 1
-  img_topic: "/v8/cam1/color/image"
+  img_topic: "/econ/cam1/color/image"
 
 time_offset:
   imu_time_offset: 0.0
@@ -16,7 +16,6 @@ time_offset:
 vio:
   raycast_en: false
   patch_size: 16
-
 
 imu:
   imu_en: true
@@ -36,11 +35,13 @@ preprocess:
 extrin_calib:
   extrinsic_T: [0.01256473, 0.00184937, -0.07039029]
   extrinsic_R: [ 0.99949463,  0.03141028, -0.00488706,
-                0.03142951, -0.99949832,  0.0039102,
+                 0.03142951, -0.99949832,  0.0039102,
                 -0.00476179, -0.00406182, -0.99998041]
-  Rcl: [-0.00342026, 0.99992363,0.01187548,-0.00505442, 0.01185811,-0.99991692,-0.99998138,-0.00348,0.00501347]
+  Rcl: [-0.00342026,  0.99992363,  0.01187548, 
+        -0.00505442,  0.01185811, -0.99991692, 
+        -0.99998138, -0.00348,     0.00501347]
   Pcl: [0.001704541183222788, -0.07129301622086368, -0.054046027107931834]
 
 evo:
-  seq_name: "Keble-2"
+  seq_name: "whytham-site4-tree"
   pose_output_en: true
