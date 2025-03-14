@@ -377,7 +377,7 @@ void LIVMapper::handleLIO()
     static bool pos_opend = false;
     static int ocount = 0;
     std::ofstream outFile, evoFile;
-    const std::string output_path = "/home/fu/Downloads/fast_livo2_logs/result/" + seq_name + ".txt";
+    const std::string output_path = "/home/mice85/fast_livo2_logs/" + seq_name + ".txt";
     if (!pos_opend) 
     {
       evoFile.open(output_path, std::ios::out);
