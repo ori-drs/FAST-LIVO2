@@ -43,5 +43,5 @@ extrin_calib:
   Pcl: [0.001704541183222788, -0.07129301622086368, -0.054046027107931834]
 
 evo:
-  seq_name: "whytham-site4-tree"
+  seq_name: "whytham-hawk-hard01"
   pose_output_en: true
