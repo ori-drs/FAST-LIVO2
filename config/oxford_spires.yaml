@@ -6,12 +6,24 @@ common:
   ros_driver_bug_fix: false
   image_en: 1
   lidar_en: 1
-  img_topic: "/alphasense_driver_ros/cam0/debayered/image"
+  img_topic: "/alphasense_driver_ros/cam0/color/image"
 
 time_offset:
   imu_time_offset: 0.0
   img_time_offset: 0.0
   exposure_time_init: 0.0
+
+vio:
+  max_iterations: 5
+  outlier_threshold: 78 # 78 100 156 #100 200 500 700 infinite
+  img_point_cov: 100 # 100 1000 
+  patch_size: 8
+  patch_pyrimid_level: 4
+  normal_en: true
+  raycast_en: false
+  inverse_composition_en: false
+  exposure_estimate_en: true
+  inv_expo_cov: 0.1
 
 imu:
   imu_en: true
@@ -39,5 +51,5 @@ extrin_calib:
   Pcl: [0.00035060884033447846, -0.079574053851818, -0.053826061545697405]
 
 evo:
-  seq_name: "Keble-2"
+  seq_name: "Bod-02-color"
   pose_output_en: true
